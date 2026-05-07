@@ -69,12 +69,13 @@ This is a pure Python package with Rust extensions in `training/rust_exts/audio_
 - `seanet.py`: SEANet encoder/decoder (copied from moshi)
 
 **Conditioners (`conditioners/`):**
-- `text.py`: `LUTConditioner` - SentencePiece-based text tokenizer that maps token IDs to embeddings via a lookup table
+- `text.py`: `LUTConditioner` - SentencePiece-based text tokenizer with lookup table embeddings
 
 ## Personal Notes
 
-> These are notes I've added while learning the codebase — may not reflect upstream intent.
+> **Fork purpose:** Using this for learning about flow-based TTS architectures and experimenting
+> with voice cloning on CPU. The LRU cache in `tts_model.py` for voice prompts is a nice touch
+> — worth understanding how that interacts with streaming generation.
 
-- The LRU cache on `get_state_for_audio_prompt()` is a nice touch; if you're scripting batch generation with a fixed voice prompt, you won't pay the encoding cost more than once.
-- `default_parameters.py` is the first place to look if you want to experiment with generation quality vs. speed tradeoffs (e.g. number of flow steps).
-- The `seanet.py` file is copied verbatim from `moshi` — avoid editing it directly; upstream changes should be pulled in manually if needed.
+- The `conditioners/text.py` entry in the original AGENTS.md was cut off mid-sentence; fixed above.
+- When testing locally, `uv run pytest -n 1 -v` can be more readable than `-n 3` if output is noisy.
