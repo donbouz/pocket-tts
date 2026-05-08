@@ -73,9 +73,6 @@ This is a pure Python package with Rust extensions in `training/rust_exts/audio_
 
 ## Personal Notes
 
-> **Fork purpose:** Using this for learning about flow-based TTS architectures and experimenting
-> with voice cloning on CPU. The LRU cache in `tts_model.py` for voice prompts is a nice touch
-> — worth understanding how that interacts with streaming generation.
-
-- The `conditioners/text.py` entry in the original AGENTS.md was cut off mid-sentence; fixed above.
-- When testing locally, `uv run pytest -n 1 -v` can be more readable than `-n 3` if output is noisy.
+> **Fork purpose:** Learning the streaming TTS pipeline and experimenting with different voice prompts.
+> The `get_state_for_audio_prompt()` method and the LRU cache logic in `tts_model.py` are the
+> main areas I'm exploring. See `default_parameters.py` for knobs worth tweaking first.
